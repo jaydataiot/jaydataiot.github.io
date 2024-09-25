@@ -1,1 +1,3 @@
-# vhsflix
+Jeffrey Young is a PhD research assistant at Clemson University’s School of Computing. His research focuses on machine learning, data mining, cybersecurity, and statistical data analysis. With 15 publications and over 100 citations, his work explores topics like voice assistant application security and macroeconomic indicators during the COVID-19 pandemic. His recent contributions include “SkillDetective,” which automates policy-violation detection in voice apps. He has collaborated extensively with researchers across institutions in areas such as smart speaker security and financial data analysis.
+
+For more details, visit Jeffrey Young’s ResearchGate.
