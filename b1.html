@@ -2,98 +2,113 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>From Hype to Impact: How Generative AI Is Redefining Data Science</title>
+    <title>Auto-Keras: An Efficient Neural Architecture Search System</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-            color: #212529;
-        }
-        .container {
+            font-family: Arial, sans-serif;
             max-width: 800px;
-            margin: 50px auto;
+            margin: 0 auto;
+            line-height: 1.6;
             padding: 20px;
-            background: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background-color: #f9f9f9;
+            color: #333;
         }
         h1, h2 {
-            color: #0056b3;
+            color: #2c3e50;
         }
-        h1 {
-            font-size: 2em;
-            margin-bottom: 0.4em;
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border: 1px solid #ccc;
+            padding: 4px;
+            background-color: #fff;
         }
-        h2 {
-            margin-top: 1.6em;
-            font-size: 1.4em;
-        }
-        p {
-            margin-bottom: 1em;
-        }
-        .footer {
-            margin-top: 40px;
-            font-size: 0.9em;
-            color: #6c757d;
-        }
-        blockquote {
-            font-style: italic;
-            border-left: 4px solid #ccc;
-            padding-left: 15px;
-            color: #555;
+        code {
+            background-color: #eee;
+            padding: 2px 6px;
+            font-size: 90%;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>From Hype to Impact: How Generative AI Is Redefining Data Science Applications</h1>
-    <p><em>By [Your Name]</em></p>
+    <h1>Auto-Keras: Democratizing Deep Learning with Efficient Neural Architecture Search</h1>
+    <p><em>Published on Eigenbytes.blog – Your hub for practical data science & machine learning insights</em></p>
 
-    <p>In the ever-evolving world of data science, few technologies have sparked as much excitement—and disruption—as <strong>Generative AI</strong>. From text and image generation to coding assistants and drug discovery, generative models are no longer just futuristic concepts—they're transforming industries in real time.</p>
+    <h2>Introduction</h2>
+    <p>
+        Neural networks are powerful—but designing the <em>right</em> one? That’s a job even seasoned data scientists can spend weeks fine-tuning. 
+        What if a system could do that for you? Enter <strong>Auto-Keras</strong>, a user-friendly and efficient 
+        <em>Neural Architecture Search (NAS)</em> system that automates the tedious and complex process of designing deep learning models.
+    </p>
 
-    <p>But what does this mean for data science professionals? Let’s dive into how generative AI is reshaping the landscape with tangible, real-world applications.</p>
+    <p>
+        Originally introduced in the paper <strong>“Auto-Keras: An Efficient Neural Architecture Search System”</strong> by Jin et al., this 
+        open-source project brings AutoML to deep learning, making state-of-the-art model design accessible with just a few lines of code.
+    </p>
 
-    <h2>What Is Generative AI?</h2>
-    <p>At its core, generative AI refers to systems that can create new content—text, images, music, code, or even synthetic data—based on learned patterns from massive datasets. This is made possible by advancements in deep learning models like GPT (text), DALL·E (images), and AlphaFold (proteins).</p>
-    <p>These models don't just analyze data—they create something <em>new</em> from it. And that's where the magic lies.</p>
+    <h2>The Big Idea: Automating Neural Network Design</h2>
+    <p>
+        Auto-Keras leverages Neural Architecture Search (NAS), a technique that explores a large space of possible network architectures 
+        using intelligent search strategies. But standard NAS methods are <strong>computationally expensive</strong>—often requiring days or 
+        even weeks on powerful clusters.
+    </p>
 
-    <h2>Real-World Applications of Generative AI</h2>
+    <h2>Key Innovations</h2>
+    
+    <h3>1. Efficient Search via Bayesian Optimization</h3>
+    <p>
+        Auto-Keras uses <strong>Bayesian optimization</strong> to reduce the number of models it needs to test. Instead of randomly guessing, 
+        it builds a probabilistic model to guide its search, dramatically cutting down on compute time.
+    </p>
 
-    <h3>1. Healthcare: Drug Discovery and Molecular Design</h3>
-    <p><strong>Example:</strong> Companies like <em>Insilico Medicine</em> and <em>Atomwise</em> are using generative models to design novel drug candidates in weeks instead of years. These models simulate how molecules might behave, identify promising compounds, and even predict toxicity.</p>
+    <h3>2. Network Morphism</h3>
+    <p>
+        Rather than training each new model from scratch, Auto-Keras uses <strong>network morphism</strong>—a technique that allows one network 
+        to evolve into another while preserving learned weights. This saves computation and accelerates convergence.
+    </p>
 
-    <h3>2. Finance: Synthetic Data for Model Training</h3>
-    <p><strong>Example:</strong> Generative models can create realistic transaction data that mimics real customer behavior without compromising privacy. Firms like <em>Mostly AI</em> and <em>Hazy</em> are already deploying such solutions, enabling safer model testing and improved fraud detection.</p>
+    <h3>3. Modular and Extensible Design</h3>
+    <p>
+        Built on <code>TensorFlow</code> and <code>Keras</code>, Auto-Keras provides a clean, Pythonic interface for AutoML. For example:
+    </p>
+    <pre><code>from autokeras import ImageClassifier
+clf = ImageClassifier(max_trials=10)
+clf.fit(x_train, y_train)</code></pre>
 
-    <h3>3. Retail: Personalized Customer Interactions</h3>
-    <p><strong>Example:</strong> Shopify merchants can now auto-generate product descriptions based on a few keywords. Meanwhile, tools powered by GPT-like models offer real-time customer support that adapts tone and content to each user.</p>
+    <h3>4. Flexible Search Space</h3>
+    <p>
+        Auto-Keras searches over a wide variety of architectures, including different layer types, sizes, and activations. This allows 
+        it to adapt to different tasks—image classification, text, or tabular data.
+    </p>
 
-    <h3>4. Education: Adaptive Learning Platforms</h3>
-    <p><strong>Example:</strong> Platforms like <em>Khan Academy</em> and <em>Duolingo</em> are integrating generative AI to tailor content and explanations based on each student's needs.</p>
+    <img src="nas_autokeras_diagram.png" alt="Auto-Keras Neural Architecture Search Diagram">
 
-    <h2>The Data Scientist’s New Role</h2>
-    <p>With generative AI taking over repetitive tasks and content creation, data scientists are stepping into more strategic roles:</p>
+    <h2>Real-World Performance</h2>
+    <p>
+        Auto-Keras performs comparably or even better than manually-designed models on datasets like CIFAR-10 and subsets of ImageNet. 
+        It can discover competitive models in <strong>hours instead of days</strong>, making it highly practical.
+    </p>
+
+    <h2>Limitations and Future Directions</h2>
     <ul>
-        <li>Curating high-quality training data</li>
-        <li>Auditing models for bias and fairness</li>
-        <li>Collaborating cross-functionally to align AI with business goals</li>
-        <li>Designing prompts and tuning models for specific outputs (aka "prompt engineering")</li>
+        <li>Still benefits most from GPU resources</li>
+        <li>Interpretability of the final architecture can be limited</li>
+        <li>Search space may not always capture domain-specific tricks</li>
     </ul>
 
-    <h2>Looking Ahead</h2>
-    <p>Generative AI is more than a buzzword—it's a paradigm shift. The key is moving beyond the hype and embracing its real-world value. Whether you're building next-gen healthcare tools or smarter chatbots, the potential is enormous.</p>
+    <h2>Conclusion</h2>
+    <p>
+        Auto-Keras is a significant step forward in democratizing deep learning. With intelligent architecture search, weight inheritance, 
+        and an easy API, it offers powerful AutoML capabilities without requiring expert-level knowledge.
+    </p>
+    <p>
+        Whether you’re a researcher, engineer, or just exploring machine learning, Auto-Keras lets you focus more on solving problems—
+        and less on model design.
+    </p>
 
-    <blockquote>“With great power comes great responsibility.”</blockquote>
-    <p>Ensuring transparency, ethical use, and inclusivity in these models will be critical. So, are you ready to build the future?</p>
-
-    <div class="footer">
-        <p>What generative AI tools have you explored? Share your experience in the comments below!</p>
-    </div>
-</div>
+    <p><strong>Try it:</strong> <a href="https://autokeras.com" target="_blank">https://autokeras.com</a></p>
 
 </body>
 </html>
