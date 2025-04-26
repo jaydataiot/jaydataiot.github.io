@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact - Eigenbytes</title>
+  <style>
+    body {
+      background-color: #0D1B2A;
+      color: #FFFFFF;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1B263B;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+    main {
+      padding: 40px;
+    }
+    form {
+      background-color: #1B263B;
+      padding: 30px;
+      border-radius: 8px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      color: #778DA9;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #415A77;
+      border-radius: 4px;
+      background-color: #0D1B2A;
+      color: #FFFFFF;
+    }
+    button {
+      margin-top: 20px;
+      background-color: #415A77;
+      color: #FFFFFF;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    button:hover {
+      background-color: #778DA9;
+    }
+    footer {
+      background-color: #1B263B;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.9em;
+      color: #778DA9;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Contact Eigenbytes</h1>
+</header>
+
+<main>
+  <form action="#" method="post">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="subject">Subject</label>
+    <input type="text" id="subject" name="subject" required>
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="6" required></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+</main>
+
+<footer>
+  &copy; 2025 Eigenbytes.com. All rights reserved.
+</footer>
+
+</body>
+</html>
