@@ -77,18 +77,18 @@
 </header>
 
 <main>
-  <form action="thankyou.html" method="post">
+  <form id="contactForm">
     <label for="name">Name</label>
-    <input type="text" id="name" name="name" required>
+    <input type="text" id="name" required>
 
     <label for="email">Email</label>
-    <input type="email" id="email" name="email" required>
+    <input type="email" id="email" required>
 
     <label for="subject">Subject</label>
-    <input type="text" id="subject" name="subject" required>
+    <input type="text" id="subject" required>
 
     <label for="message">Message</label>
-    <textarea id="message" name="message" rows="6" required></textarea>
+    <textarea id="message" rows="6" required></textarea>
 
     <button type="submit">Send Message</button>
   </form>
@@ -97,6 +97,28 @@
 <footer>
   &copy; 2025 Eigenbytes.com. All rights reserved.
 </footer>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault(); // Stop the normal form submit
+
+  // Collect form data
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const subject = document.getElementById('subject').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  if (!name || !email || !subject || !message) {
+    alert("Please fill in all fields.");
+    return;
+  }
+
+  // Normally here you'd send it to a server...
+  // For now we simulate a success and redirect
+  alert("Thank you for your message! Redirecting...");
+  window.location.href = "thankyou.html"; // Go to thank you page
+});
+</script>
 
 </body>
 </html>
