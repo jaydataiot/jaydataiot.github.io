@@ -42,13 +42,13 @@
       padding: 10px;
       border: 1px solid #415A77;
       border-radius: 4px;
-      background-color: #0D1B2A;
+      background-color: #2E6B35;
       color: #FFFFFF;
     }
     button {
       margin-top: 20px;
-      background-color: #415A77;
-      color: #FFFFFF;
+      background-color: #F76C6C;
+      color: white;
       border: none;
       padding: 12px 20px;
       border-radius: 4px;
@@ -56,7 +56,7 @@
       font-size: 1em;
     }
     button:hover {
-      background-color: #778DA9;
+      background-color: white;
     }
     footer {
       background-color: #1B263B;
@@ -141,8 +141,8 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     }
   })
   .catch(error => {
-    console.error('Error!', error.message);
-    alert("Error sending message. Please check your connection and try again.");
+  console.error('Error sending data to Google Sheets:', error);
+  alert("Error sending message. Please check your connection and try again.");
   });
 });
 </script>
