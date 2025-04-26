@@ -6,14 +6,14 @@
   <title>Contact - Eigenbytes</title>
   <style>
     body {
-      background-color: #0D1B2A;
-      color: #FFFFFF;
+      background-color: #ffffff;
+      color: #2d2d2d;
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
     }
     header {
-      background-color: #1B263B;
+      background-color: #FFF1D0;
       padding: 20px;
       text-align: center;
     }
@@ -25,7 +25,7 @@
       padding: 40px;
     }
     form {
-      background-color: #1B263B;
+      background-color: #EC8027;
       padding: 30px;
       border-radius: 8px;
       max-width: 600px;
@@ -99,6 +99,9 @@
 </footer>
 
 <script>
+// Replace this with your actual Google Apps Script Web App URL
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwx7gdGmuWYmoIRTRB9fmxXXdRjQiI_ngZ9X6s4re87wbqzRrSx5ozNK95PwBde-JDc/exec';
+
 document.getElementById('contactForm').addEventListener('submit', function(e) {
   e.preventDefault(); // Stop the normal form submit
 
@@ -113,10 +116,34 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     return;
   }
 
-  // Normally here you'd send it to a server...
-  // For now we simulate a success and redirect
-  alert("Thank you for your message! Redirecting...");
-  window.location.href = "thankyou.html"; // Go to thank you page
+  // Prepare data to send
+  const formData = {
+    name: name,
+    email: email,
+    subject: subject,
+    message: message
+  };
+
+  // Send form data to Google Sheets
+  fetch(scriptURL, {
+    method: 'POST',
+    body: JSON.stringify(formData),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => {
+    if (response.ok) {
+      alert("Thank you for your message! Redirecting...");
+      window.location.href = "thankyou.html"; // Redirect after success
+    } else {
+      alert("Something went wrong. Please try again later.");
+    }
+  })
+  .catch(error => {
+    console.error('Error!', error.message);
+    alert("Error sending message. Please check your connection and try again.");
+  });
 });
 </script>
 
