@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thank You - Eigenbytes</title>
+  <style>
+    body {
+      background-color: #0D1B2A;
+      color: #FFFFFF;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background-color: #1B263B;
+      padding: 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+    main {
+      padding: 60px 20px;
+    }
+    .checkmark {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #415A77;
+      display: inline-block;
+      position: relative;
+      animation: bounce 1s ease;
+      margin-bottom: 30px;
+    }
+    .checkmark::after {
+      content: '';
+      position: absolute;
+      left: 22px;
+      top: 40px;
+      width: 20px;
+      height: 40px;
+      border-right: 5px solid #FFFFFF;
+      border-bottom: 5px solid #FFFFFF;
+      transform: rotate(45deg);
+    }
+    @keyframes bounce {
+      0% { transform: scale(0.5); opacity: 0; }
+      50% { transform: scale(1.2); opacity: 1; }
+      70% { transform: scale(0.9); }
+      100% { transform: scale(1); }
+    }
+    h2 {
+      color: #778DA9;
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.2em;
+      color: #FFFFFF;
+    }
+    a.button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 25px;
+      background-color: #415A77;
+      color: #FFFFFF;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 1em;
+    }
+    a.button:hover {
+      background-color: #778DA9;
+    }
+    footer {
+      background-color: #1B263B;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.9em;
+      color: #778DA9;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Thank You!</h1>
+</header>
+
+<main>
+  <div class="checkmark"></div>
+  <h2>Your message has been sent!</h2>
+  <p>We appreciate you reaching out to Eigenbytes.<br>
+     We'll get back to you as soon as possible.</p>
+  
+  <a class="button" href="eigenbytes.html">Back to Home</a>
+</main>
+
+<footer>
+  &copy; 2025 Eigenbytes.com. All rights reserved.
+</footer>
+
+</body>
+</html>
