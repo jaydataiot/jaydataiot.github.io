@@ -92,10 +92,49 @@
         
         <a class="cta-button" href="#">Explore Our Content</a>
     </main>
+    <h1>Latest Tech News</h1>
+    <div id="news-feed">Loading...</div>
 
-    <footer>
-        &copy; 2025 Eigenbytes.com. All rights reserved.
-    </footer>
+    <script>
+    async function fetchRSS() {
+      const proxy = 'https://api.allorigins.win/get?url=';
+      const rssFeed = encodeURIComponent('https://news.google.com/rss/search?q=technology&hl=en-US&gl=US&ceid=US:en');
+      try {
+        const res = await fetch(`${proxy}${rssFeed}`);
+        const data = await res.json();
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(data.contents, "text/xml");
+        const items = xml.querySelectorAll("item");
+
+        const newsFeed = document.getElementById('news-feed');
+        newsFeed.innerHTML = '';
+
+        items.forEach((item, i) => {
+          if (i < 5) { // Show only the latest 5
+            const title = item.querySelector("title").textContent;
+            const link = item.querySelector("link").textContent;
+            const pubDate = new Date(item.querySelector("pubDate").textContent).toLocaleString();
+
+            const newsItem = `
+              <div class="news-item">
+                <a href="${link}" target="_blank"><strong>${title}</strong></a>
+                <br><small>${pubDate}</small>
+              </div>`;
+            newsFeed.innerHTML += newsItem;
+          }
+        });
+      } catch (error) {
+        document.getElementById('news-feed').innerHTML = "Error fetching news.";
+        console.error("Error:", error);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", fetchRSS);
+  </script>
+
+  <footer>
+      &copy; 2025 Eigenbytes.com. All rights reserved.
+  </footer>
 
 </body>
 </html>
