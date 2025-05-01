@@ -97,15 +97,12 @@
 <footer>
   &copy; 2025 Eigenbytes.com. All rights reserved.
 </footer>
-
 <script>
-// Replace this with your actual Google Apps Script Web App URL
 const scriptURL = 'https://script.google.com/macros/s/AKfycbwx7gdGmuWYmoIRTRB9fmxXXdRjQiI_ngZ9X6s4re87wbqzRrSx5ozNK95PwBde-JDc/exec';
 
 document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault(); // Stop the normal form submit
+  e.preventDefault();
 
-  // Collect form data
   const name = document.getElementById('name').value.trim();
   const email = document.getElementById('email').value.trim();
   const subject = document.getElementById('subject').value.trim();
@@ -116,7 +113,6 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     return;
   }
 
-  // Prepare data to send
   const formData = {
     name: name,
     email: email,
@@ -124,25 +120,22 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     message: message
   };
 
-  // Send form data to Google Sheets
   fetch(scriptURL, {
     method: 'POST',
+    mode: 'no-cors', // 👈 disables CORS check
     body: JSON.stringify(formData),
     headers: {
       'Content-Type': 'application/json'
     }
   })
-  .then(response => {
-    if (response.ok) {
-      alert("Thank you for your message! Redirecting...");
-      window.location.href = "thankyou.html"; // Redirect after success
-    } else {
-      alert("Something went wrong. Please try again later.");
-    }
+  .then(() => {
+    // We can't inspect the response, so assume success
+    alert("Thank you for your message! Redirecting...");
+    window.location.href = "thankyou.html";
   })
-  .catch(error => {
-  console.error('Error sending data to Google Sheets:', error);
-  alert("Error sending message. Please check your connection and try again.");
+  .catch((error) => {
+    console.error('Error!', error.message);
+    alert("Error sending message. Please try again later.");
   });
 });
 </script>
