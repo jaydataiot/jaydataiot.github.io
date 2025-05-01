@@ -68,8 +68,15 @@
             bottom: 0;
             width: 100%;
         }
-       h1 {
-          color: #2c3e50;
+        .container {
+          display: flex;
+          justify-content: center;
+          padding: 20px;
+        }
+        .feed-wrapper {
+          max-width: 600px;
+          width: 100%;
+          text-align: left;
         }
         .news-item {
           margin-bottom: 15px;
@@ -98,10 +105,10 @@
         <h2>Welcome to Eigenbytes!</h2>
         <p>Eigenbytes is your premier destination for exploring data science topics, connecting with industry professionals, and learning from in-depth tutorials and articles. Join our growing community to stay ahead in the fast-paced world of data analytics, machine learning, and artificial intelligence.</p>
         <h2>Latest Tech News</h2>
-        <div id="news-feed">Loading...</div>
-        <a class="cta-button" href="#">Explore Our Content</a>
     </main>
-
+    <div class="container">
+        <div id="news-feed" class="feed-wrapper">Loading...</div>
+    </div>
     <script>
     async function fetchRSS() {
       const proxy = 'https://api.allorigins.win/get?url=';
