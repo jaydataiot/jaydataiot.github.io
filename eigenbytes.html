@@ -149,9 +149,9 @@
           color: #555;
         }
 
-</style>
-</head>
-<body>
+    </style>
+    </head>
+    <body>
 
     <header>
         <img src="logo.PNG" alt="Logo" style="max-width:100%; height:auto;">
@@ -174,62 +174,53 @@
 
   <h2>Latest Tech News & Posts</h2>
 
-  <div class="post">📘 New Post: Deploying AI Agents on Static Websites – A How-To Guide.</div>
-      <!-- News will be injected here -->
-    </div>
-  </div>
-</main>
-
   <div class="feed-scroll" id="news-feed">
     <div class="post">📢 Welcome to Eigenbytes – where data meets clarity.</div>
     <div class="post">📘 New Post: Deploying AI Agents on Static Websites – A How-To Guide.</div>
     <!-- News will be injected here -->
+    <div id="news-feed" class="feed-wrapper">Loading...</div>
   </div>
+</main>
+<script>
+async function fetchRSS() {
+  const proxy = 'https://api.allorigins.win/get?url=';
+  const rssFeed = encodeURIComponent('https://news.google.com/rss/search?q=technology&hl=en-US&gl=US&ceid=US:en');
+  try {
+    const res = await fetch(`${proxy}${rssFeed}`);
+    const data = await res.json();
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(data.contents, "text/xml");
+    const items = xml.querySelectorAll("item");
 
+    const newsFeed = document.getElementById('news-feed');
+    newsFeed.innerHTML = '';
 
-    <div class="container">
-        <div id="news-feed" class="feed-wrapper">Loading...</div>
-    </div>
-    <script>
-    async function fetchRSS() {
-      const proxy = 'https://api.allorigins.win/get?url=';
-      const rssFeed = encodeURIComponent('https://news.google.com/rss/search?q=technology&hl=en-US&gl=US&ceid=US:en');
-      try {
-        const res = await fetch(`${proxy}${rssFeed}`);
-        const data = await res.json();
-        const parser = new DOMParser();
-        const xml = parser.parseFromString(data.contents, "text/xml");
-        const items = xml.querySelectorAll("item");
+    items.forEach((item, i) => {
+      if (i < 5) { // Show only the latest 5
+        const title = item.querySelector("title").textContent;
+        const link = item.querySelector("link").textContent;
+        const pubDate = new Date(item.querySelector("pubDate").textContent).toLocaleString();
 
-        const newsFeed = document.getElementById('news-feed');
-        newsFeed.innerHTML = '';
-
-        items.forEach((item, i) => {
-          if (i < 5) { // Show only the latest 5
-            const title = item.querySelector("title").textContent;
-            const link = item.querySelector("link").textContent;
-            const pubDate = new Date(item.querySelector("pubDate").textContent).toLocaleString();
-
-            const newsItem = `
-              <div class="news-item">
-                <a href="${link}" target="_blank"><strong>${title}</strong></a>
-                <br><small>${pubDate}</small>
-              </div>`;
-            newsFeed.innerHTML += newsItem;
-          }
-        });
-      } catch (error) {
-        document.getElementById('news-feed').innerHTML = "Error fetching news.";
-        console.error("Error:", error);
+        const newsItem = `
+          <div class="news-item">
+            <a href="${link}" target="_blank"><strong>${title}</strong></a>
+            <br><small>${pubDate}</small>
+          </div>`;
+        newsFeed.innerHTML += newsItem;
       }
-    }
+    });
+  } catch (error) {
+    document.getElementById('news-feed').innerHTML = "Error fetching news.";
+    console.error("Error:", error);
+  }
+}
 
-    document.addEventListener("DOMContentLoaded", fetchRSS);
-  </script>
+document.addEventListener("DOMContentLoaded", fetchRSS);
+</script>
 
-  <footer>
-      &copy; 2025 Eigenbytes.com. All rights reserved.
-  </footer>
+<footer>
+  &copy; 2025 Eigenbytes.com. All rights reserved.
+</footer>
 
 </body>
 </html>
