@@ -152,54 +152,23 @@
   <h2>Welcome to Eigenbytes!</h2>
   <p>Eigenbytes is your premier destination for exploring data science topics, connecting with industry professionals, and learning from in-depth tutorials and articles. Join our growing community to stay ahead in the fast-paced world of data analytics, machine learning, and artificial intelligence.</p>
 
-  <h2>Latest Tech News & Posts</h2>
+  <h2>Latest News & Posts</h2>
 
   <div class="feed-scroll" id="posts">
     <center>
-    <div class="post">📢 Welcome to Eigenbytes – where data meets clarity.</div>
-    <div class="post">📘 New Post: Deploying AI Agents on Static Websites – A How-To Guide.</div>
-    <!-- News will be injected here -->
-    <div id="news-feed" class="feed-wrapper">Loading...</div>
-  </center>
+    <div class="post">
+      📢 <a href="feed/welcome.html" target="_blank">
+        Welcome to Eigenbytes – where data meets clarity.
+          </a>
+    </div>
+    <div class="post">
+      📘 <a href="feed/ai_how_to.html" target="_blank">
+        New Post: Deploying AI Agents on Static Websites – A How-To Guide.
+          </a>
+    </div>
+    </center>
   </div>
 </main>
-<script>
-async function fetchRSS() {
-  const proxy = 'https://api.allorigins.win/get?url=';
-  const rssFeed = encodeURIComponent('https://news.google.com/rss/search?q=technology&hl=en-US&gl=US&ceid=US:en');
-  try {
-    const res = await fetch(`${proxy}${rssFeed}`);
-    const data = await res.json();
-    const parser = new DOMParser();
-    const xml = parser.parseFromString(data.contents, "text/xml");
-    const items = xml.querySelectorAll("item");
-
-    const newsFeed = document.getElementById('news-feed');
-    newsFeed.innerHTML = '';
-
-    items.forEach((item, i) => {
-      if (i < 5) { // Show only the latest 5
-        const title = item.querySelector("title").textContent;
-        const link = item.querySelector("link").textContent;
-        const pubDate = new Date(item.querySelector("pubDate").textContent).toLocaleString();
-
-        const newsItem = `
-          <div class="news-item">
-            <a href="${link}" target="_blank"><strong>${title}</strong></a>
-            <br><small>${pubDate}</small>
-          </div>`;
-        newsFeed.innerHTML += newsItem;
-      }
-    });
-  } catch (error) {
-    document.getElementById('news-feed').innerHTML = "Error fetching news.";
-    console.error("Error:", error);
-  }
-}
-
-document.addEventListener("DOMContentLoaded", fetchRSS);
-</script>
-
 <footer>
   &copy; 2025 Eigenbytes.com. All rights reserved.
 </footer>
