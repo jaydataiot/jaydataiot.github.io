@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eigenbytes Blog</title>
+    <title>Eigenbytes Tutorials</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -30,30 +31,15 @@
             margin: 0 15px;
             font-weight: bold;
         }
-
         nav a:hover {
             color: white;
-        }
-
-        .cta-button {
-            background-color: #F76C6C;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            display: inline-block;
-            margin-top: 20px;
-        }
-
-        .cta-button:hover {
-            background-color: #f55252;
         }
         main {
             max-width: 800px;
             margin: 20px auto;
             padding: 10px;
         }
-        .post-list a {
+        .tutorial-list a {
             display: block;
             background-color: #fff;
             border: 1px solid #2E6B35;
@@ -63,7 +49,7 @@
             text-decoration: none;
             color: black;
         }
-        .post-list a:hover {
+        .tutorial-list a:hover {
             background-color: #FFF1D0;
         }
         .search-box {
@@ -103,7 +89,7 @@
 
 <header>
     <img src="logo.PNG" alt="Logo" style="max-width:100%; height:auto;">
-    <p style="color:hsla(132, 40%, 30%, 1); font-size:18px;">Exploring Data Science, One Byte at a Time</p>
+    <p style="color:hsla(132, 40%, 30%, 1); font-size:18px;">Learn Data Science, One Tutorial at a Time</p>
 </header>
 
 <nav>
@@ -118,53 +104,52 @@
 <main>
 
     <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Search blog posts...">
-        <button onclick="searchPosts()">Search</button>
+        <input type="text" id="searchInput" placeholder="Search tutorials...">
+        <button onclick="searchTutorials()">Search</button>
     </div>
 
-    <h2>Latest Posts</h2>
-    <div id="latestPosts" class="post-list">
-        <a href="blogs/b1.html">Auto-Keras: Democratizing Deep Learning with Efficient Neural Architecture Search</a>
-        <a href="post2.html">Data Science and Real-World Applications</a>
-        <a href="post3.html">Introduction to Neural Networks</a>
-        <a href="post4.html">Understanding Predictive Analytics</a>
-        <a href="post5.html">Security Issues in IoT Devices</a>
+    <h2>Latest Tutorials</h2>
+    <div id="tutorialList" class="tutorial-list">
+        <a href="tutorials/t1/t1.html">Getting Started with Python for Data Science</a>
+        <a href="tutorials/t2.html">Exploratory Data Analysis with Pandas</a>
+        <a href="tutorials/t3.html">Building Linear Regression Models</a>
+        <a href="tutorials/t4.html">Time Series Forecasting with Prophet</a>
+        <a href="tutorials/t5.html">Data Visualization using Matplotlib and Seaborn</a>
     </div>
-
-    <h2>Post History</h2>
-    <div id="postHistory" class="post-list">
-        <a href="post6.html">Big Data Essentials</a>
-        <a href="post7.html">AI in Healthcare</a>
-        <a href="post8.html">Analyzing Social Media Data</a>
-        <a href="post9.html">Time Series Forecasting Methods</a>
-        <a href="post10.html">Deep Learning in NLP</a>
+    <h2>Misc Tutorials</h2>
+    <div id="tutorialList" class="tutorial-list">
+        <a href="tutorials/tn1/ai_how_to.html">Deploying AI Agents on Static Websites – A How-To Guide.</a>
+        <a href="tutorials/t2.html">Exploratory Data Analysis with Pandas</a>
+        <a href="tutorials/t3.html">Building Linear Regression Models</a>
+        <a href="tutorials/t4.html">Time Series Forecasting with Prophet</a>
+        <a href="tutorials/t5.html">Data Visualization using Matplotlib and Seaborn</a>
+        <br>
     </div>
 
 </main>
 
 <footer>
-    © 2025 Eigenbytes.blog – Built by Data Nerds for Data Nerds
+    © 2025 Eigenbytes.blog – Tutorials for the Next Generation of Data Scientists
 </footer>
 
 <script>
-    function searchPosts() {
+    function searchTutorials() {
         const query = document.getElementById('searchInput').value.toLowerCase();
-        const posts = document.querySelectorAll('.post-list a');
+        const tutorials = document.querySelectorAll('.tutorial-list a');
 
-        posts.forEach(post => {
-            const text = post.textContent.toLowerCase();
+        tutorials.forEach(tutorial => {
+            const text = tutorial.textContent.toLowerCase();
             if (text.includes(query)) {
-                post.style.display = 'block';
+                tutorial.style.display = 'block';
             } else {
-                post.style.display = 'none';
+                tutorial.style.display = 'none';
             }
         });
     }
 
-    // Allow search to trigger when pressing Enter key
     document.getElementById('searchInput').addEventListener('keyup', function(event) {
         if (event.key === 'Enter') {
-            searchPosts();
+            searchTutorials();
         }
     });
 </script>

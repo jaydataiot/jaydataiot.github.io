@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Deploying AI Agents on Static Websites: A How-To Guide</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      color: #2d2d2d;
+      margin: 40px auto;
+      max-width: 800px;
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      color: #2E6B35;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    .figure-caption {
+      font-size: 0.9em;
+      color: #555;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Deploying AI Agents on Static Websites: A How-To Guide</h1>
+<p><em>Posted on May 19, 2025</em></p>
+
+<p>Integrating AI agents into static websites has become simpler thanks to cloud-hosted services and JavaScript APIs. This guide walks you through how to deploy a basic AI chatbot onto your static website without needing a dynamic backend server.</p>
+
+<h2>1. Choose Your AI Backend</h2>
+<p>For static sites, you'll rely on third-party APIs like OpenAI’s GPT, Google Dialogflow, or Microsoft Bot Framework hosted as a Web App. These services allow you to send and receive AI-generated responses through simple HTTP requests.</p>
+
+<table>
+  <caption><strong>Popular AI Platforms for Static Sites</strong></caption>
+  <thead>
+    <tr>
+      <th>Platform</th>
+      <th>API Type</th>
+      <th>Cost</th>
+      <th>Ease of Use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>OpenAI (ChatGPT)</td>
+      <td>REST</td>
+      <td>Pay-as-you-go</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <td>Dialogflow</td>
+      <td>REST / gRPC</td>
+      <td>Free tier + usage</td>
+      <td>Medium</td>
+    </tr>
+    <tr>
+      <td>Botpress Cloud</td>
+      <td>REST / WebSocket</td>
+      <td>Free for basic usage</td>
+      <td>Medium</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>2. Basic HTML + JavaScript Setup</h2>
+<p>Here’s a minimal example that uses OpenAI’s API with JavaScript fetch:</p>
+
+<pre><code>&lt;script&gt;
+async function askAI(message) {
+  const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer YOUR_API_KEY"
+    },
+    body: JSON.stringify({
+      model: "gpt-3.5-turbo",
+      messages: [{ role: "user", content: message }]
+    })
+  });
+  const data = await response.json();
+  document.getElementById("ai-response").innerText = data.choices[0].message.content;
+}
+&lt;/script&gt;
+</code></pre>
+
+<p>Make sure to replace <code>YOUR_API_KEY</code> with your actual API key.</p>
+
+<h2>3. UI for Interaction</h2>
+<p>Add a simple UI element to capture input and display the response:</p>
+
+<pre><code>&lt;input type="text" id="user-input" placeholder="Ask something..." /&gt;
+&lt;button onclick="askAI(document.getElementById('user-input').value)"&gt;Ask AI&lt;/button&gt;
+&lt;p id="ai-response" style="margin-top: 20px; font-style: italic;"&gt;&lt;/p&gt;
+</code></pre>
+
+<h2>4. Hosting the Static Site</h2>
+<p>You can host your static site with AI integration on platforms like:</p>
+<ul>
+  <li>GitHub Pages</li>
+  <li>Netlify</li>
+  <li>Vercel</li>
+</ul>
+
+<h2>5. Security Reminder</h2>
+<p><strong>⚠️ Never expose private API keys in production.</strong> Use serverless functions or proxies for secure token handling.</p>
+
+<h2>6. Diagram</h2>
+<img src="how_to">
+<div class="figure-caption">Figure: Typical AI integration flow from static frontend to cloud-hosted backend.</div>
+
+<p>By following this guide, you can bring interactive AI experiences to your users with minimal backend complexity.</p>
+
+</body>
+</html>

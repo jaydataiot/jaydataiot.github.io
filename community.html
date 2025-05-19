@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eigenbytes Community</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fdfdfd;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #FFF1D0;
+      text-align: center;
+      padding: 20px;
+    }
+    nav {
+      background-color: #EC8027;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: #2E6B35;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: white;
+    }
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    h2 {
+      color: #2E6B35;
+    }
+    .group {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      padding: 15px;
+      border-radius: 5px;
+    }
+    .group h3 {
+      margin-top: 0;
+    }
+    .question-box, .post-box {
+      margin-top: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 80px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: vertical;
+    }
+    .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2E6B35;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    }
+
+    .btn:hover {
+      background-color: #255528;
+    }
+    .message {
+      background-color: #f1f1f1;
+      padding: 10px;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Eigenbytes Community</h1>
+  <p>Connect, Collaborate, and Grow Together</p>
+</header>
+
+<nav>
+  <a href="eigenbytes.html">Home</a>
+  <a href="blog.html">Blog</a>
+  <a href="tutorials.html">Tutorials</a>
+  <a href="community.html">Community</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<main>
+  <section>
+  <h2>Join a Peer Group</h2>
+  <p>Select a group that best fits your current skill level or education background. You can join multiple!</p>
+
+  <div class="group">
+    <h3>🧑‍🎓 Undergraduates in Data Science</h3>
+    <p>Discuss assignments, early projects, and fundamental concepts.</p>
+    <a href="undergrad_chat.html" class="btn">Join Group</a>
+  </div>
+
+  <div class="group">
+    <h3>🎓 Graduate Students & Researchers</h3>
+    <p>Discuss academic papers, research problems, and experiments.</p>
+    <a href="grad_chat.html" class="btn">Join Group</a>
+  </div>
+
+  <div class="group">
+    <h3>👨‍💻 Working Professionals</h3>
+    <p>Talk shop about real-world data applications and careers.</p>
+    <a href="pro_chat.html" class="btn">Join Group</a>
+  </div>
+
+  <div class="group">
+    <h3>🌐 Open Community</h3>
+    <p>Anyone can ask or answer questions—great for cross-pollination of knowledge.</p>
+    <a href="open_chat.html" class="btn">Join Group</a>
+  </div>
+  </section>
+
+  <section>
+    <h2>Ask the Community</h2>
+    <div class="question-box">
+      <label for="question">Have a question? Ask below:</label><br/>
+      <textarea id="question" placeholder="Type your question here..."></textarea><br/>
+      <button onclick="postQuestion()">Post Question</button>
+    </div>
+    <div id="questionFeed">
+      <!-- Questions will appear here -->
+    </div>
+  </section>
+</main>
+
+<script>
+  function postQuestion() {
+    const question = document.getElementById('question').value;
+    if (question.trim() !== '') {
+      const container = document.createElement('div');
+      container.className = 'message';
+      container.textContent = question;
+      document.getElementById('questionFeed').prepend(container);
+      document.getElementById('question').value = '';
+    }
+  }
+</script>
+
+</body>
+</html>

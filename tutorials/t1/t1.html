@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting Started with Python for Data Science</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      color: #2d2d2d;
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    h1, h2 {
+      color: #2E6B35;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    table, th, td {
+      border: 1px solid #2E6B35;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    code {
+      background-color: #f4f4f4;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 15px;
+      overflow-x: auto;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Getting Started with Python for Data Science</h1>
+<p>Python has become one of the most popular languages in data science due to its simplicity, extensive libraries, and vibrant community. In this tutorial, we'll cover the essentials to get started with Python for data science.</p>
+
+<h2>1. Why Python for Data Science?</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Reason</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ease of Learning</td>
+      <td>Simple syntax and readability make Python great for beginners.</td>
+    </tr>
+    <tr>
+      <td>Library Ecosystem</td>
+      <td>Popular packages like NumPy, Pandas, Matplotlib, and Scikit-learn support data manipulation, visualization, and machine learning.</td>
+    </tr>
+    <tr>
+      <td>Community Support</td>
+      <td>Python has a large and active community offering extensive tutorials and resources.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>2. Setting Up Your Environment</h2>
+<p>You can install Python and essential data science libraries using <code>pip</code> or use a distribution like Anaconda which bundles them for you.</p>
+
+<pre><code># Using pip
+pip install numpy pandas matplotlib scikit-learn jupyter</code></pre>
+
+<h2>3. First Steps with Pandas</h2>
+<p>Pandas is a powerful data analysis library. Let's start by loading and exploring a dataset.</p>
+
+<pre><code>import pandas as pd
+
+# Load dataset
+df = pd.read_csv('data.csv')
+
+# Show first 5 rows
+print(df.head())</code></pre>
+
+<h2>4. Visualizing Data</h2>
+<p>Use Matplotlib or Seaborn to create visual insights:</p>
+
+<pre><code>import matplotlib.pyplot as plt
+
+# Histogram of a column
+df['age'].hist()
+plt.title('Age Distribution')
+plt.xlabel('Age')
+plt.ylabel('Frequency')
+plt.show()</code></pre>
+
+<img src="Matplotlib_bar_chart.png" alt="Sample histogram plot">
+
+<h2>5. Building a Simple Model</h2>
+<p>Use Scikit-learn to build a simple linear regression model.</p>
+
+<pre><code>from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+
+X = df[['feature1']]
+y = df['target']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+print("Model Score:", model.score(X_test, y_test))</code></pre>
+
+<h2>Conclusion</h2>
+<p>This tutorial has given you a brief introduction to Python for data science. With continued practice using these libraries, you'll be well on your way to developing data-driven insights and models.</p>
+
+<p><em>Next steps: Explore deeper into Pandas, try your own datasets, and learn about classification models.</em></p>
+
+</body>
+</html>

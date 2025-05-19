@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Undergraduates in Data Science – Group Chat</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fefefe;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #FFF1D0;
+      padding: 20px;
+      text-align: center;
+      color: #2E6B35;
+    }
+    nav {
+      background-color: #EC8027;
+      text-align: center;
+      padding: 10px;
+    }
+    nav a {
+      color: #2E6B35;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: white;
+    }
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    h2 {
+      color: #2E6B35;
+    }
+    #chat-box {
+      height: 400px;
+      border: 1px solid #ddd;
+      padding: 10px;
+      overflow-y: scroll;
+      background-color: #f9f9f9;
+      margin-bottom: 15px;
+      border-radius: 5px;
+    }
+    .message {
+      margin-bottom: 10px;
+      padding: 8px;
+      background-color: #eef7ed;
+      border-radius: 5px;
+    }
+    .sender {
+      font-weight: bold;
+      color: #2E6B35;
+    }
+    #chat-form input, #chat-form textarea {
+      padding: 10px;
+      margin-bottom: 10px;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    #chat-form button {
+      background-color: #2E6B35;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    #chat-form button:hover {
+      background-color: #255528;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="logo.PNG" alt="Logo" style="max-width:100%; height:auto;">
+  <h3>Working Professionals</h3>
+  <p>Collaborate. Learn. Grow together.</p>
+</header>
+
+<nav>
+  <a href="eigenbytes.html">Home</a>
+  <a href="blog.html">Blog</a>
+  <a href="tutorials.html">Tutorials</a>
+  <a href="community.html">Community</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<main>
+  <h2>Group Chat</h2>
+  <div id="chat-box"></div>
+  <form id="chat-form">
+    <input type="text" id="username" placeholder="Your name..." required />
+    <textarea id="message" placeholder="Type your message..." required></textarea>
+    <button type="submit">Send</button>
+  </form>
+</main>
+
+<script>
+  const form = document.getElementById('chat-form');
+  const chatBox = document.getElementById('chat-box');
+
+  function loadChat() {
+    const messages = JSON.parse(localStorage.getItem('undergrad_chat') || '[]');
+    chatBox.innerHTML = '';
+    messages.forEach(msg => {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = 'message';
+      msgDiv.innerHTML = '<span class="sender">' + msg.name + ':</span> ' + msg.text;
+      chatBox.appendChild(msgDiv);
+    });
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('username').value.trim();
+    const text = document.getElementById('message').value.trim();
+    if (name && text) {
+      const messages = JSON.parse(localStorage.getItem('undergrad_chat') || '[]');
+      messages.push({ name: name, text: text });
+      localStorage.setItem('undergrad_chat', JSON.stringify(messages));
+      form.reset();
+      loadChat();
+    }
+  });
+
+  window.addEventListener('load', loadChat);
+</script>
+
+</body>
+</html>
