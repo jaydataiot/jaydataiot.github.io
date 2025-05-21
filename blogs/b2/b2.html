@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Consistent Bayesian Inference from Synthetic Data</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0 auto;
+      padding: 40px;
+      max-width: 800px;
+      line-height: 1.6;
+      background-color: #fff;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #2E6B35;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      margin: 20px 0;
+      border-radius: 6px;
+    }
+    a {
+      color: #EC8027;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧠 Consistent Bayesian Inference from Synthetic Data</h1>
+  <p>This post summarizes the JMLR paper <em>“On Consistent Bayesian Inference from Synthetic Data”</em> by Ossi Räisä, Joonas Jälkö, and Antti Honkela. The paper addresses how to perform valid Bayesian inference when only synthetic data is available, a critical concern for privacy-preserving machine learning and data analysis.</p>
+
+  <h2>📌 Key Contributions</h2>
+  <ul>
+    <li><strong>Methodology:</strong> The authors propose generating multiple large synthetic datasets from a posterior predictive distribution. By performing Bayesian inference on each dataset and combining the results, they aim to approximate the true posterior.</li>
+    <li><strong>Theoretical Guarantees:</strong> When the analyst's and data provider's models are congenial and synthetic datasets are sufficiently large, the posterior converges to the true distribution as more datasets are combined.</li>
+    <li><strong>Practical Use:</strong> This framework allows analysts to apply familiar Bayesian inference tools without modifying their pipelines.</li>
+  </ul>
+
+  <h2>🧪 Experimental Validation</h2>
+  <p>The authors validate their method with two scenarios:</p>
+  <ul>
+    <li><strong>Gaussian Mean Estimation:</strong> The method accurately recovers the posterior under known conditions.</li>
+    <li><strong>Differentially Private Bayesian Logistic Regression:</strong> Even with DP noise, the approach performs reliably when models are well-matched and datasets are large.</li>
+  </ul>
+
+  <img src="image_b2.png" alt="Figure from the paper showing convergence of posterior estimates">
+
+  <h2>⚠️ Limitations</h2>
+  <ul>
+    <li><strong>Model Compatibility:</strong> Results depend on the compatibility (congeniality) of the analyst’s model with the data provider’s generation process.</li>
+    <li><strong>Synthetic Data Size:</strong> Synthetic datasets must be large—often larger than the original dataset—for convergence guarantees to hold.</li>
+  </ul>
+
+  <h2>🔗 Further Reading</h2>
+  <ul>
+    <li><a href="https://www.jmlr.org/papers/v26/23-1428.html" target="_blank">Full paper (JMLR)</a></li>
+    <li><a href="https://arxiv.org/abs/2305.16795" target="_blank">arXiv preprint</a></li>
+    <li><a href="https://github.com/DPBayes/NAPSU-MQ-bayesian-downstream-experiments" target="_blank">Code on GitHub</a></li>
+  </ul>
+
+  <p>This research provides a vital path toward usable, theoretically grounded Bayesian inference in settings where only synthetic data is available, especially relevant to differentially private systems.</p>
+
+</body>
+</html>
