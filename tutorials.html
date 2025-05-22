@@ -84,6 +84,37 @@
         h2 {
             color: black;
         }
+        /* Responsive design for phones/tablets */
+        @media screen and (max-width: 768px) {
+          body {
+            font-size: 16px;
+            padding: 0;
+          }
+
+          .feed-wrapper {
+            padding: 15px;
+            margin: 10px;
+          }
+
+          .post {
+            padding: 15px;
+          }
+
+          nav a {
+            display: block;
+            margin: 10px 0;
+          }
+
+          img {
+            max-width: 100%;
+            height: auto;
+          }
+
+          .container {
+            flex-direction: column;
+            padding: 10px;
+          }
+        }
     </style>
 </head>
 <!-- Google tag (gtag.js) -->
