@@ -162,6 +162,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
+firebase.auth().signInAnonymously();
 const db = firebase.database();
 </script>
 <script>
