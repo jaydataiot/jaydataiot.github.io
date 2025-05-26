@@ -5,7 +5,10 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Undergraduates in Data Science – Group Chat</title>
+  <!-- Compatibility SDK (recommended for your setup) -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+  <title>Professionals in Data Science – Group Chat</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -136,63 +139,56 @@
 </nav>
 
 <main>
-  <h2>Group Chat</h2>
-  <div id="chat-box"></div>
+  <h2>Ask the Community</h2>
+  <div id="chat-box" style="height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; border-radius: 5px;"></div>
   <form id="chat-form">
-    <input type="text" id="username" placeholder="Your name..." required />
-    <textarea id="message" placeholder="Type your message..." required></textarea>
-    <button type="submit">Send</button>
+    <input type="text" id="username" placeholder="Your name..." required style="width: 100%; padding: 10px; margin-bottom: 10px;">
+    <textarea id="message" placeholder="Type your message..." required style="width: 100%; height: 80px; padding: 10px;"></textarea>
+    <button type="submit" class="btn" style="margin-top: 10px;">Send</button>
   </form>
 </main>
+<script>
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyAttLnwkUSLUrQ7nHTS8GcW5v2J2jJrZTo",
+  authDomain: "real-time-messaging-2d127.firebaseapp.com",
+  databaseURL: "https://real-time-messaging-2d127-default-rtdb.firebaseio.com",
+  projectId: "real-time-messaging-2d127",
+  storageBucket: "real-time-messaging-2d127.firebasestorage.app",
+  messagingSenderId: "86196437184",
+  appId: "1:86196437184:web:ebbbfcf39c0f8c157e6d25",
+  measurementId: "G-7XCK1SJEHC"
+};
+
+// Initialize Firebase
+const app = firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+</script>
 
 <script>
-  const form = document.getElementById('chat-form');
-  const chatBox = document.getElementById('chat-box');
+  const form = document.getElementById("chat-form");
+  const chatBox = document.getElementById("chat-box");
+  const messagesRef = db.ref("messages/pro");
 
-  function loadChat() {
-    const messages = JSON.parse(localStorage.getItem('undergrad_chat') || '[]');
-    chatBox.innerHTML = '';
-    messages.forEach(msg => {
-      const msgDiv = document.createElement('div');
-      msgDiv.className = 'message';
-      msgDiv.innerHTML = '<span class="sender">' + msg.name + ':</span> ' + msg.text;
-      chatBox.appendChild(msgDiv);
-    });
+  messagesRef.on("child_added", (snapshot) => {
+    const msg = snapshot.val();
+    const msgDiv = document.createElement("div");
+    msgDiv.className = "message";
+    msgDiv.innerHTML = `<span class="sender">${msg.name}:</span> ${msg.text}`;
+    chatBox.appendChild(msgDiv);
     chatBox.scrollTop = chatBox.scrollHeight;
-  }
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const name = document.getElementById('username').value.trim();
-    const text = document.getElementById('message').value.trim();
-    if (name && text) {
-      const messages = JSON.parse(localStorage.getItem('undergrad_chat') || '[]');
-      messages.push({ name: name, text: text });
-      localStorage.setItem('undergrad_chat', JSON.stringify(messages));
-      form.reset();
-      loadChat();
-    }
   });
 
-  window.addEventListener('load', loadChat);
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const name = document.getElementById("username").value.trim();
+    const text = document.getElementById("message").value.trim();
+    if (name && text) {
+      messagesRef.push({ name, text });
+      form.reset();
+    }
+  });
 </script>
-<!-- Giscus Comment System -->
-<div style="margin-top: 40px;">
-  <script src="https://giscus.app/client.js"
-          data-repo="jaydataiot/jaydataiot.github.io"
-          data-repo-id="R_kgDOLaMc7Q"
-          data-category-id="DIC_kwDOLaMc7c4CqkAF"
-          data-mapping="title"
-          data-strict="0"
-          data-reactions-enabled="1"
-          data-emit-metadata="1"
-          data-input-position="top"
-          data-theme="noborder_light"
-          data-lang="en"
-          data-loading="lazy"
-          crossorigin="anonymous"
-          async>
-  </script>
-</div>
 </body>
 </html>
