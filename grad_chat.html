@@ -8,6 +8,7 @@
   <!-- Compatibility SDK (recommended for your setup) -->
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
   <title>Graduates in Data Science – Group Chat</title>
   <style>
     body {
@@ -162,34 +163,40 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
-firebase.auth().signInAnonymously();
-const db = firebase.database();
-</script>
+  firebase.initializeApp(firebaseConfig);
 
-<script>
-  const form = document.getElementById("chat-form");
-  const chatBox = document.getElementById("chat-box");
-  const messagesRef = db.ref("messages/grad");
+  // 🔐 Anonymous sign-in
+  firebase.auth().signInAnonymously()
+    .then(() => {
+      console.log("Signed in anonymously");
 
-  messagesRef.on("child_added", (snapshot) => {
-    const msg = snapshot.val();
-    const msgDiv = document.createElement("div");
-    msgDiv.className = "message";
-    msgDiv.innerHTML = `<span class="sender">${msg.name}:</span> ${msg.text}`;
-    chatBox.appendChild(msgDiv);
-    chatBox.scrollTop = chatBox.scrollHeight;
-  });
+      // ✅ Now safe to run messaging logic
+      const db = firebase.database();
+      const form = document.getElementById('chat-form');
+      const chatBox = document.getElementById('chat-box');
+      const messagesRef = db.ref('messages/grad'); // Example path
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    const name = document.getElementById("username").value.trim();
-    const text = document.getElementById("message").value.trim();
-    if (name && text) {
-      messagesRef.push({ name, text });
-      form.reset();
-    }
-  });
+      messagesRef.on('child_added', (snapshot) => {
+        const msg = snapshot.val();
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'message';
+        msgDiv.innerHTML = `<span class="sender">${msg.name}:</span> ${msg.text}`;
+        chatBox.appendChild(msgDiv);
+      });
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const name = document.getElementById("username").value.trim();
+        const text = document.getElementById("message").value.trim();
+        if (name && text) {
+          messagesRef.push({ name, text });
+          form.reset();
+        }
+      });
+    })
+    .catch((error) => {
+      console.error("Anonymous sign-in failed:", error);
+    });
 </script>
 </body>
 </html>
