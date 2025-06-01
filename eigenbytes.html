@@ -139,6 +139,18 @@
     display: none;
   }
 
+  @media (max-width: 768px) {
+    #chat-widget {
+      bottom: 70px; /* move up from mobile navbar */
+      right: 10px;
+      width: 90%;
+    }
+
+    #chat-body iframe {
+      height: 300px; /* shorter iframe for smaller screens */
+    }
+  }
+
   /* Responsive design for phones/tablets */
   @media screen and (max-width: 768px) {
     body {
