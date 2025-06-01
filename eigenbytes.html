@@ -1,275 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eigenbytes - Data Science Community</title>
-    <style>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eigenbytes - Data Science Community</title>
+  <style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    color: #2d2d2d;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background-color: #FFF1D0;
+    color: #2E6B35;
+    padding: 20px;
+    text-align: center;
+  }
+
+  nav {
+    background-color: #EC8027;
+    padding: 10px;
+    text-align: center;
+  }
+
+  nav a {
+    color: #2E6B35;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+  }
+
+  nav a:hover {
+    color: white;
+  }
+
+  main {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: auto;
+  }
+
+  .cta-button {
+    background-color: #F76C6C;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 20px;
+  }
+
+  .cta-button:hover {
+    background-color: #f55252;
+  }
+
+  footer {
+    background-color: #FFF1D0;
+    color: #2E6B35;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .feed-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  }
+
+  .post {
+    background-color: #fcfcfc;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: left;
+  }
+
+  .news-item {
+    background: #eee;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  .news-item a {
+    color: #2E6B35;
+    text-decoration: none;
+  }
+
+  .news-item small {
+    color: #555;
+  }
+
+  #chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 350px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 9999;
+  }
+
+  #chat-header {
+    background-color: #2E6B35;
+    color: white;
+    padding: 12px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 10px 10px 0 0;
+  }
+
+  #chat-body {
+    background-color: white;
+    border: 1px solid #ccc;
+    display: none;
+  }
+
+  /* Responsive design for phones/tablets */
+  @media screen and (max-width: 768px) {
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f4f4;
-      color: #2d2d2d;
-      line-height: 1.6;
-      margin: 0;
+      font-size: 16px;
       padding: 0;
     }
 
-    header {
-      background-color: #FFF1D0;
-      color: #2E6B35;
-      padding: 20px;
-      text-align: center;
-    }
-
-    nav {
-      background-color: #EC8027;
-      padding: 10px;
-      text-align: center;
-    }
-
-    nav a {
-      color: #2E6B35;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: white;
-    }
-
-    main {
-      padding: 40px 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .cta-button {
-      background-color: #F76C6C;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 5px;
-      display: inline-block;
-      margin-top: 20px;
-    }
-
-    .cta-button:hover {
-      background-color: #f55252;
-    }
-
-    footer {
-      background-color: #FFF1D0;
-      color: #2E6B35;
-      text-align: center;
-      padding: 15px;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
-
-    .container {
-      display: flex;
-      justify-content: center;
-      padding: 20px;
-    }
-
     .feed-wrapper {
-      max-width: 800px;
-      margin: 0 auto;
-      background-color: #ffffff;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      padding: 15px;
+      margin: 10px;
     }
 
     .post {
-      background-color: #fcfcfc;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      text-align: left;
-    }
-
-    .news-item {
-      background: #eee;
       padding: 15px;
-      margin-bottom: 15px;
-      border-radius: 6px;
-      text-align: center;
     }
 
-    .news-item a {
-      color: #2E6B35;
-      text-decoration: none;
+    nav a {
+      display: block;
+      margin: 10px 0;
     }
 
-    .news-item small {
-      color: #555;
+    img {
+      max-width: 100%;
+      height: auto;
     }
 
-    /* Responsive design for phones/tablets */
-    @media screen and (max-width: 768px) {
-      body {
-        font-size: 16px;
-        padding: 0;
-      }
-
-      .feed-wrapper {
-        padding: 15px;
-        margin: 10px;
-      }
-
-      .post {
-        padding: 15px;
-      }
-
-      nav a {
-        display: block;
-        margin: 10px 0;
-      }
-
-      img {
-        max-width: 100%;
-        height: auto;
-      }
-
-      .container {
-        flex-direction: column;
-        padding: 10px;
-      }
+    .container {
+      flex-direction: column;
+      padding: 10px;
     }
+  }
 
-    </style>
-    <meta name="google-site-verification" content="zkAHx_RuPmEywoIMq9diKfRyAo9Wa50hSHm8d9JAS8A" />
-    </head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X6H44H2SKR"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-X6H44H2SKR');
-    </script>
-    <body>
-
-    <header>
-        <img src="logo.PNG" alt="Logo" style="max-width:100%; height:auto;">
-        <p style="color:hsla(132, 40%, 30%, 1); font-size:18px;">Your Go-to Data Science Community & Blog</p>
-    </header>
-
-    <nav>
-        <a href="#">Home</a>
-        <a href="blog.html">Blog</a>
-        <a href="tutorials.html">Tutorials</a>
-        <a href="community.html">Community</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-
-<main>
-  <h2>Welcome to Eigenbytes!</h2>
-  <p>Eigenbytes is your premier destination for exploring data science topics, connecting with industry professionals, and learning from in-depth tutorials and articles. Join our growing community to stay ahead in the fast-paced world of data analytics, machine learning, and artificial intelligence.</p>
-
-  <h2>Latest News & Posts</h2>
-
-    <div class="feed-scroll" id="posts">
-    <center>
-    <div class="post">
-    <h3>📢 Welcome to Eigenbytes – where data meets clarity.</h3>
-    <p style="text-align: left;">
-      At <strong>Eigenbytes</strong>, we go beyond the headlines. Our platform is a curated hub for 
-      <em>top-tier journal discussions</em>, expert commentary, and distilled insights from the most impactful research 
-      in data science, artificial intelligence, and machine learning.
-    </p>
-    <p style="text-align: left;">
-      Whether you're an academic, a data science professional, or a student aiming to stay on the cutting edge, 
-      Eigenbytes bridges the gap between scholarly research and real-world application. Each post unpacks breakthrough 
-      papers—published in venues like <em>NeurIPS, JMLR, ACM Computing Surveys</em>, and <em>IEEE Transactions</em>—
-      with clarity, precision, and context.
-    </p>
-      🧠 <strong>What to Expect</strong>:
-      <ul style="text-align: left;">
-      <li>In-depth analysis of high-impact journal articles</li>
-      <li>Thoughtful commentary from experts and emerging voices</li>
-      <li>Real-world implications of academic innovations</li>
-      <li>A growing community of data-driven minds</li>
-    </ul>
-    <p>
-      Follow us and join the conversation. Let’s make data science more rigorous, relevant, and reachable.
-    </p>
-    </div>
-    <div class="post">
-    <h3>🚧 We’re Just Getting Started</h3>
-    <p style="text-align: left;">Thank you for stopping by <strong>Eigenbytes</strong>! We're in the early stages of building something special — a trusted hub for curated insights from the top journals in data science, AI, and machine learning.</p>
-
-    <p>Over the coming weeks, we’ll be rolling out:</p>
-    <ul>
-      <ul style="text-align: left;">
-      <li>🧠 Expertly summarized blog posts on high-impact academic papers</li>
-      <li>📊 Visual guides and walkthroughs for complex concepts</li>
-      <li>🎓 A community-driven space for learning and collaboration</li>
-    </ul>
-
-    <p style="text-align: left;">We appreciate your patience as we polish the site and begin populating it with content that’s as rigorous as it is accessible. If you're passionate about data science, we hope you'll stick around — the best is yet to come.</p>
-
-    <p>– The Eigenbytes Team</p>
-    </div>    
-    <div class="post">
-      📘 New Post 5.18.2025: Deploying AI Agents on Static Websites – A How-To Guide is live in the Tutorial section.
-    </div>
-    <div class="post">
-    <h3>📚 Top-Tier Journals in Data Science</h3>
-    <p style="text-align: left;">
-    Looking to stay current with the highest-impact research in data science? Here’s a curated list of the most respected and influential journals in the field. These are the venues where groundbreaking work in machine learning, statistics, big data, and AI regularly appear.</p>
-
-    <ul>
-      <ul style="text-align: left;">
-      <li><strong>Journal of Machine Learning Research (JMLR)</strong><br/>
-      A leading open-access journal publishing high-quality papers on all aspects of machine learning.</li>
-
-      <li><strong>IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)</strong><br/>
-      Focuses on computer vision, pattern recognition, and machine learning theory. One of the most cited journals in AI.</li>
-
-      <li><strong>Nature Machine Intelligence</strong><br/>
-      A prestigious interdisciplinary journal at the intersection of computer science, neuroscience, and robotics.</li>
-
-      <li><strong>ACM Transactions on Intelligent Systems and Technology (TIST)</strong><br/>
-      Publishes cutting-edge research on intelligent systems, data mining, and knowledge discovery.</li>
-
-      <li><strong>Data Mining and Knowledge Discovery (DMKD)</strong><br/>
-      Focuses on methodological advances in data mining, including novel algorithms, theory, and applications.</li>
-
-      <li><strong>IEEE Transactions on Knowledge and Data Engineering (TKDE)</strong><br/>
-      Covers research on knowledge discovery, databases, and scalable systems for big data analytics.</li>
-
-      <li><strong>Machine Learning Journal (Springer)</strong><br/>
-      One of the foundational journals in the field, covering all aspects of learning algorithms and theory.</li>
-
-      <li><strong>Journal of the American Statistical Association (JASA)</strong><br/>
-      Highly influential in statistical modeling and inference, particularly in the context of big data.</li>
-
-      <li><strong>Annals of Applied Statistics</strong><br/>
-      Publishes data-driven statistical methods applied to complex real-world problems.</li>
-
-      <li><strong>ACM Computing Surveys (CSUR)</strong><br/>
-      Known for its comprehensive survey articles that define subfields within data science and computing.</li>
-    </ul>
-
-    <p style="text-align: left;">🔎 Interested in summaries of papers from these journals? Follow <strong>Eigenbytes</strong> for curated commentary, visual breakdowns, and hands-on examples of real-world impact.</p>
-    </div>
-    <br>
-    </center>
+  </style>
+  <meta name="google-site-verification" content="zkAHx_RuPmEywoIMq9diKfRyAo9Wa50hSHm8d9JAS8A" />
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X6H44H2SKR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-X6H44H2SKR');
+</script>
+<body>
+  <header>
+      <img src="logo.PNG" alt="Logo" style="max-width:100%; height:auto;">
+      <p style="color:hsla(132, 40%, 30%, 1); font-size:18px;">Your Go-to Data Science Community & Blog</p>
+  </header>
+  <nav>
+      <a href="#">Home</a>
+      <a href="blog.html">Blog</a>
+      <a href="tutorials.html">Tutorials</a>
+      <a href="community.html">Community</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+  </nav>
+  <div id="chat-widget">
+  <div id="chat-header" onclick="toggleChat()">💬 Chat with EigenBot</div>
+  <div id="chat-body" style="display: none;">
+    <iframe 
+      id="chat-frame"
+      src="https://ai-web-companion-jaydataiot.replit.app/"
+      frameborder="0"
+      width="100%" 
+      height="400px"
+      style="border: none; border-top: 1px solid #ccc;">
+    </iframe>
   </div>
-</main>
-<footer>
-  &copy; 2025 Eigenbytes.com. All rights reserved.
-</footer>
+  </div>
+  <main>
+    <h2>Welcome to Eigenbytes!</h2>
+    <p>Eigenbytes is your premier destination for exploring data science topics, connecting with industry professionals, and learning from in-depth tutorials and articles. Join our growing community to stay ahead in the fast-paced world of data analytics, machine learning, and artificial intelligence.</p>
 
+    <h2>Latest News & Posts</h2>
+
+      <div class="feed-scroll" id="posts">
+      <center>
+      <div class="post">
+      <h3>📢 Welcome to Eigenbytes – where data meets clarity.</h3>
+      <p style="text-align: left;">
+        At <strong>Eigenbytes</strong>, we go beyond the headlines. Our platform is a curated hub for 
+        <em>top-tier journal discussions</em>, expert commentary, and distilled insights from the most impactful research 
+        in data science, artificial intelligence, and machine learning.
+      </p>
+      <p style="text-align: left;">
+        Whether you're an academic, a data science professional, or a student aiming to stay on the cutting edge, 
+        Eigenbytes bridges the gap between scholarly research and real-world application. Each post unpacks breakthrough 
+        papers—published in venues like <em>NeurIPS, JMLR, ACM Computing Surveys</em>, and <em>IEEE Transactions</em>—
+        with clarity, precision, and context.
+      </p>
+        🧠 <strong>What to Expect</strong>:
+        <ul style="text-align: left;">
+        <li>In-depth analysis of high-impact journal articles</li>
+        <li>Thoughtful commentary from experts and emerging voices</li>
+        <li>Real-world implications of academic innovations</li>
+        <li>A growing community of data-driven minds</li>
+      </ul>
+      <p>
+        Follow us and join the conversation. Let’s make data science more rigorous, relevant, and reachable.
+      </p>
+      </div>
+      <div class="post">
+      <h3>🚧 We’re Just Getting Started</h3>
+      <p style="text-align: left;">Thank you for stopping by <strong>Eigenbytes</strong>! We're in the early stages of building something special — a trusted hub for curated insights from the top journals in data science, AI, and machine learning.</p>
+
+      <p>Over the coming weeks, we’ll be rolling out:</p>
+      <ul>
+        <ul style="text-align: left;">
+        <li>🧠 Expertly summarized blog posts on high-impact academic papers</li>
+        <li>📊 Visual guides and walkthroughs for complex concepts</li>
+        <li>🎓 A community-driven space for learning and collaboration</li>
+      </ul>
+
+      <p style="text-align: left;">We appreciate your patience as we polish the site and begin populating it with content that’s as rigorous as it is accessible. If you're passionate about data science, we hope you'll stick around — the best is yet to come.</p>
+
+      <p>– The Eigenbytes Team</p>
+      </div>    
+      <div class="post">
+        📘 New Post 5.18.2025: Deploying AI Agents on Static Websites – A How-To Guide is live in the Tutorial section.
+      </div>
+      <div class="post">
+      <h3>📚 Top-Tier Journals in Data Science</h3>
+      <p style="text-align: left;">
+      Looking to stay current with the highest-impact research in data science? Here’s a curated list of the most respected and influential journals in the field. These are the venues where groundbreaking work in machine learning, statistics, big data, and AI regularly appear.</p>
+
+      <ul>
+        <ul style="text-align: left;">
+        <li><strong>Journal of Machine Learning Research (JMLR)</strong><br/>
+        A leading open-access journal publishing high-quality papers on all aspects of machine learning.</li>
+
+        <li><strong>IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)</strong><br/>
+        Focuses on computer vision, pattern recognition, and machine learning theory. One of the most cited journals in AI.</li>
+
+        <li><strong>Nature Machine Intelligence</strong><br/>
+        A prestigious interdisciplinary journal at the intersection of computer science, neuroscience, and robotics.</li>
+
+        <li><strong>ACM Transactions on Intelligent Systems and Technology (TIST)</strong><br/>
+        Publishes cutting-edge research on intelligent systems, data mining, and knowledge discovery.</li>
+
+        <li><strong>Data Mining and Knowledge Discovery (DMKD)</strong><br/>
+        Focuses on methodological advances in data mining, including novel algorithms, theory, and applications.</li>
+
+        <li><strong>IEEE Transactions on Knowledge and Data Engineering (TKDE)</strong><br/>
+        Covers research on knowledge discovery, databases, and scalable systems for big data analytics.</li>
+
+        <li><strong>Machine Learning Journal (Springer)</strong><br/>
+        One of the foundational journals in the field, covering all aspects of learning algorithms and theory.</li>
+
+        <li><strong>Journal of the American Statistical Association (JASA)</strong><br/>
+        Highly influential in statistical modeling and inference, particularly in the context of big data.</li>
+
+        <li><strong>Annals of Applied Statistics</strong><br/>
+        Publishes data-driven statistical methods applied to complex real-world problems.</li>
+
+        <li><strong>ACM Computing Surveys (CSUR)</strong><br/>
+        Known for its comprehensive survey articles that define subfields within data science and computing.</li>
+      </ul>
+
+      <p style="text-align: left;">🔎 Interested in summaries of papers from these journals? Follow <strong>Eigenbytes</strong> for curated commentary, visual breakdowns, and hands-on examples of real-world impact.</p>
+      </div>
+      <br>
+      </center>
+    </div>
+  </main>
+  <footer>
+    &copy; 2025 Eigenbytes.com. All rights reserved.
+  </footer>
+  <script>
+    function toggleChat() {
+      const body = document.getElementById('chat-body');
+      body.style.display = (body.style.display === 'none') ? 'block' : 'none';
+    }
+  </script>
 </body>
 </html>
 
