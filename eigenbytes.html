@@ -139,6 +139,21 @@
     display: none;
   }
 
+  .responsive-video {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  }
+
+.responsive-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
   /* Responsive design for phones/tablets */
   @media screen and (max-width: 768px) {
     body {
@@ -311,10 +326,10 @@
       </div>
 
       <div class="post">
-        <center>
-          <h3>First video is live on YouTube. Please give it a watch and leave a comment. I look forward to hearing your suggestions.</h3>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/jJtFeyD73qw?si=s-dfR0ESy9vRKoVB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </center>
+        📘 New Post 6.13.2025: Posted first video in the Top Tier Journal Review series. Please give it a watch below. I would appreciate any constructive feedback. If you have any future vidoe ideas, please let me know. 
+      </div>
+      <div class="responsive-video">
+        <iframe src="https://www.youtube.com/embed/jJtFeyD73qw?si=s-dfR0ESy9vRKoVB" frameborder="0" allowfullscreen></iframe>
       </div>
       </br>
       </center>
