@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Me – Sai Ot</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      color: #2d2d2d;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #FFF1D0;
+      color: #2E6B35;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background-color: #EC8027;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: #2E6B35;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: white;
+    }
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 10px;
+    }
+    footer {
+      background-color: #FFF1D0;
+      color: #2E6B35;
+      text-align: center;
+      padding: 15px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    .blog-container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 32px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 24px rgba(44, 107, 53, 0.09);
+      text-align: center;
+    }
+    .section-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+    }
+    .section-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #EC8027;
+      color: #FFF1D0;
+      border-radius: 10px;
+      padding: 36px 40px;
+      min-width: 170px;
+      font-size: 1.25em;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+      box-shadow: 0 6px 18px rgba(247, 108, 108, 0.07);
+    }
+    .section-link:hover {
+      background: #EC8027;
+      color: #2E6B35;
+      transform: translateY(-5px) scale(1.04);
+    }
+    @media (max-width: 700px) {
+      .blog-container { padding: 16px; }
+      .section-links { gap: 14px; }
+      .section-link { padding: 18px 10px; min-width: 110px; font-size: 1em;}
+    }
+    /* Responsive design for phones/tablets */
+    @media screen and (max-width: 768px) {
+      body {
+        font-size: 16px;
+        padding: 0;
+      }
+      .feed-wrapper {
+        padding: 15px;
+        margin: 10px;
+      }
+      .post {
+        padding: 15px;
+      }
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+      .container {
+        flex-direction: column;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X6H44H2SKR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-X6H44H2SKR');
+</script>
+<body>
+
+<header>
+  <img src="logo.PNG" alt="Eigenbytes Logo" style="max-width:100%; height:auto;">
+  <p style="color:hsla(132, 40%, 30%, 1); font-size:18px;">EigenBytes explores data, one byte at a time</p>
+</header>
+<nav>
+  <a href="eigenbytes.html">Home</a>
+  <a href="blog.html">Blog</a>
+  <a href="tutorials.html">Tutorials</a>
+  <a href="community.html">Community</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
+<main>
+  <div class="blog-container">
+    <h2>Explore Our Topics</h2>
+    <p>Dive into curated posts and resources in these key areas of modern data science:</p>
+    <div class="section-links">
+      <a href="blog_ds.html" class="section-link">Data Science</a>
+      <a href="blog_ml.html" class="section-link">Machine Learning</a>
+      <a href="ai.html" class="section-link">AI</a>
+      <a href="ai_security.html" class="section-link">AI Security</a>
+    </div>
+  </div>
+</main>
+<footer>
+  © 2025 Eigenbytes.blog – Tutorials for the Next Generation of Data Scientists
+</footer>
+
+</body>
+</html>
